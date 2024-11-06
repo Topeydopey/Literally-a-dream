@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c570052d9ca845be4d247f16c61e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   resetPosition: 32
   offscreenPosition: -49
 --- !u!212 &355825300
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c570052d9ca845be4d247f16c61e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   resetPosition: 32
   offscreenPosition: -49
 --- !u!212 &1030057003
