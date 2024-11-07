@@ -18,6 +18,7 @@ public class MainMenuController : MonoBehaviour
 
     void OnStartButtonClicked()
     {
+        //Debug.Log("startButton Clicked");
         // Stop the tunnel loop for each segment
         foreach (TunnelLooper segment in tunnelSegments)
         {

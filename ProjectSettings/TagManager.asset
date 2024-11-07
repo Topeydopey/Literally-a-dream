@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - LightLayer1
+  - LightLayer2
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: LightLayer1
+    uniqueID: 1422537071
+    locked: 0
+  - name: LightLayer2
+    uniqueID: 2200551899
+    locked: 0
+  - name: LightLayer3
+    uniqueID: 3634835907
     locked: 0
