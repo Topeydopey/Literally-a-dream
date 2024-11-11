@@ -15,8 +15,9 @@ public class MainMenuController : MonoBehaviour
         startButton.onClick.AddListener(OnStartButtonClicked);
     }
 
-    void OnStartButtonClicked()
+    public void OnStartButtonClicked()
     {
+        Debug.Log("Button Pressed");
         // Play the sound effect
         audioSource.Play();
 
