@@ -757,7 +757,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -660131389
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -1221497897, guid: 239f316a11804b54f9cf8035763e6c82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   fadeOutAnimator: {fileID: 2076553627}
   audioSource: {fileID: 1788833063}
   startButton: {fileID: 1365207802}
-  transitionDelay: 1.5
+  transitionDelay: 3
 --- !u!1 &842092418
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,8 +2266,8 @@ SceneRoots:
   - {fileID: 562566913}
   - {fileID: 971359815}
   - {fileID: 842092419}
-  - {fileID: 852006291}
   - {fileID: 579502694}
+  - {fileID: 852006291}
   - {fileID: 1896378311}
   - {fileID: 826295128}
   - {fileID: 362789461}
