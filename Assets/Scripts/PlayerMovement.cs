@@ -9,18 +9,31 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Get input for horizontal (A/D or Left/Right arrows) and vertical (W/S or Up/Down arrows) movement
-        //float xInput = Input.GetAxisRaw("Horizontal");
+        float xInput = Input.GetAxisRaw("Horizontal");
         float yInput = Input.GetAxisRaw("Vertical");
 
         // Set automatic rightward movement
         float xVelocity = autoMoveSpeed;
-        // Add player-controlled movement on the X-axis and Y-axis
-        /*
-        if (Mathf.Abs(xInput) > 0)
+
+        // Add player-controlled movement on the X-axis
+        // Currently, "A" (left input) is disabled
+        if (xInput > 0) // Only allow "D" (right input) to increase speed
         {
-            xVelocity += xInput * moveSpeed; // Player-controlled horizontal input
+            xVelocity += xInput * moveSpeed;
+        }
+
+        // If you want to re-enable "A" (left input) to slow down the player, uncomment this block:
+        /*
+        if (xInput < 0) // "A" (left input) slows down the automatic movement
+        {
+            xVelocity += xInput * moveSpeed; // Decrease xVelocity when pressing "A"
         }
         */
+
+        // Prevent backward movement
+        xVelocity = Mathf.Max(xVelocity, 0); // Clamp xVelocity to ensure it doesn't go below 0
+
+        // Add vertical movement
         float yVelocity = body.velocity.y; // Keep the current Y velocity if there's no vertical input
         if (Mathf.Abs(yInput) > 0)
         {
