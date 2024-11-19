@@ -6,29 +6,44 @@ public class PlayerMovement : MonoBehaviour
     public float autoMoveSpeed = 2f; // Constant automatic speed to the right
     public Rigidbody2D body;
 
-    void Update()
+    [Header("Player 2 Settings")]
+    public GameObject player2; // Reference to Player 2 GameObject
+    public KeyCode togglePlayer2Key = KeyCode.M; // Key to toggle Player 2
+
+    private void Update()
     {
-        // Get input for horizontal (A/D or Left/Right arrows) and vertical (W/S or Up/Down arrows) movement
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
+        HandleMovement();
+        HandlePlayer2Toggle();
+    }
+
+    private void HandleMovement()
+    {
+        // Get input for W/D keys (horizontal) and W/S keys (vertical)
+        float xInput = 0f;
+        float yInput = 0f;
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            xInput = 1f; // Move right
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            yInput = 1f; // Move up
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            yInput = -1f; // Move down
+        }
 
         // Set automatic rightward movement
         float xVelocity = autoMoveSpeed;
 
         // Add player-controlled movement on the X-axis
-        // Currently, "A" (left input) is disabled
         if (xInput > 0) // Only allow "D" (right input) to increase speed
         {
             xVelocity += xInput * moveSpeed;
         }
-
-        // If you want to re-enable "A" (left input) to slow down the player, uncomment this block:
-        /*
-        if (xInput < 0) // "A" (left input) slows down the automatic movement
-        {
-            xVelocity += xInput * moveSpeed; // Decrease xVelocity when pressing "A"
-        }
-        */
 
         // Prevent backward movement
         xVelocity = Mathf.Max(xVelocity, 0); // Clamp xVelocity to ensure it doesn't go below 0
@@ -42,5 +57,18 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the Rigidbody2D velocity to combine automatic rightward movement and player input
         body.velocity = new Vector2(xVelocity, yVelocity);
+    }
+
+    private void HandlePlayer2Toggle()
+    {
+        // Check if the toggle key is pressed
+        if (Input.GetKeyDown(togglePlayer2Key))
+        {
+            // Toggle Player 2's active state
+            if (player2 != null)
+            {
+                player2.SetActive(!player2.activeSelf);
+            }
+        }
     }
 }
