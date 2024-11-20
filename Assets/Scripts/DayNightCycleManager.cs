@@ -22,6 +22,12 @@ public class DayNightCycleManager : MonoBehaviour
     public float nightSunIntensity = 0.5f; // Sunlight intensity for night
     public float nightGlobalIntensity = 0.3f; // Global light intensity for night
 
+    [Header("Hat References")]
+    public Transform hat; // Reference to the hat object
+    public Transform catHead; // Reference to the cat's head
+    public Transform hatOffScreenLocation; // Reference to the off-screen location for the hat
+    public float hatDropSpeed = 5f; // Speed of the hat dropping/rising
+
     private bool isNight = false; // Tracks whether it is currently night
 
     public void CheckForDayNightCycle(int score)
@@ -48,6 +54,9 @@ public class DayNightCycleManager : MonoBehaviour
         Color initialSunColor = sunLight.color;
         float initialSunIntensity = sunLight.intensity;
         float initialGlobalIntensity = globalLight.intensity;
+
+        // Hat rising transition
+        StartCoroutine(MoveHat(catHead, hatOffScreenLocation)); // Use the off-screen location
 
         while (timer < transitionDuration)
         {
@@ -76,6 +85,9 @@ public class DayNightCycleManager : MonoBehaviour
         float initialSunIntensity = sunLight.intensity;
         float initialGlobalIntensity = globalLight.intensity;
 
+        // Hat dropping transition
+        StartCoroutine(MoveHat(catHead, hatOffScreenLocation)); // Use the off-screen location
+
         while (timer < transitionDuration)
         {
             timer += Time.deltaTime;
@@ -92,6 +104,28 @@ public class DayNightCycleManager : MonoBehaviour
         }
 
         SetNightMode();
+    }
+
+    private IEnumerator MoveHat(Transform catHeadTransform, Transform offScreenTransform)
+    {
+        Vector3 offScreenPosition = offScreenTransform.position; // Off-screen location
+        float timer = 0f;
+
+        while (timer < 1f)
+        {
+            timer += Time.deltaTime * hatDropSpeed;
+
+            // Dynamically determine the target position
+            Vector3 currentTarget = isNight ? catHeadTransform.position : offScreenPosition;
+
+            // Smoothly move the hat
+            hat.position = Vector3.Lerp(hat.position, currentTarget, timer);
+
+            yield return null;
+        }
+
+        // Snap the hat to the final position
+        hat.position = isNight ? catHeadTransform.position : offScreenPosition;
     }
 
     private void SetDayMode()

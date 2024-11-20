@@ -104,13 +104,8 @@ MonoBehaviour:
   scoreValue: 2
   trampleTag: Cat
   trampleSounds:
-  - {fileID: 8300000, guid: d910ec63b35ec304fa5c303abca09461, type: 3}
-  - {fileID: 8300000, guid: a5b2fe529196b3d48b315f1732a76c3c, type: 3}
-  - {fileID: 8300000, guid: 3c2508beebb52cb4780bcd07b2995d85, type: 3}
-  - {fileID: 8300000, guid: 669b2a5a102986b4ebc1b1814a6366fc, type: 3}
-  - {fileID: 8300000, guid: ccdc9ab5fcb39aa4c8230579948923c0, type: 3}
-  - {fileID: 8300000, guid: c30f53fe1bfe2754b963027667d22287, type: 3}
-  - {fileID: 8300000, guid: 067e3266369079a4a991632c27416fae, type: 3}
+  - {fileID: 8300000, guid: 7db0c469a4288e540b60b76fe1e332e7, type: 3}
+  - {fileID: 8300000, guid: e300a38768a1b0444a957196c0c64dd2, type: 3}
 --- !u!61 &7219857135304151904
 BoxCollider2D:
   m_ObjectHideFlags: 0
