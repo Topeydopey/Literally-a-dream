@@ -4,6 +4,9 @@ public class TrampledSoundPlayer : MonoBehaviour
 {
     private AudioSource audioSource;
 
+    [Header("Despawn Settings")]
+    public float despawnDelay = 5f; // Additional delay after the sound finishes
+
     private void Awake()
     {
         // Add or get an AudioSource component
@@ -20,8 +23,13 @@ public class TrampledSoundPlayer : MonoBehaviour
         {
             audioSource.PlayOneShot(clip);
 
-            // Optionally destroy the object after the sound finishes
-            Destroy(gameObject, clip.length);
+            // Destroy the object after the sound finishes plus the delay
+            Destroy(gameObject, clip.length + despawnDelay);
+        }
+        else
+        {
+            // If no clip is provided, just destroy after the delay
+            Destroy(gameObject, despawnDelay);
         }
     }
 }
