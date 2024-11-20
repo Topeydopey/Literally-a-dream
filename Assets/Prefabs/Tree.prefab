@@ -100,8 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampledVersion: {fileID: 7915691502780934677, guid: 8e5ebbccea2eaa54787028468265b652, type: 3}
-  despawnDelay: 10
   scoreValue: 1
+  trampleSounds:
+  - {fileID: 8300000, guid: b1502424a710ae44d8ca2e4c2e18b254, type: 3}
+  - {fileID: 8300000, guid: 47a2494ab4a69b24186a19734e41dae8, type: 3}
+  - {fileID: 8300000, guid: 5f862556424896942a86271e6e774356, type: 3}
+  soundVolume: 0.4
 --- !u!61 &929985312840077372
 BoxCollider2D:
   m_ObjectHideFlags: 0

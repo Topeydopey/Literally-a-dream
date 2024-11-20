@@ -17,11 +17,11 @@ public class TrampledSoundPlayer : MonoBehaviour
         }
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip, float volume = 1f)
     {
         if (clip != null)
         {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, volume); // Use the passed volume
 
             // Destroy the object after the sound finishes plus the delay
             Destroy(gameObject, clip.length + despawnDelay);
