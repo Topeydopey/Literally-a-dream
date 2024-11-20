@@ -8,6 +8,7 @@ public class MainMenuController : MonoBehaviour
     public AudioSource audioSource; // Reference to the AudioSource
     public Button startButton; // Reference to the Start button
     public float transitionDelay = 1f; // Delay after fade-out before loading the next scene
+    private bool buttonClicked = false; // Tracks whether the button has been clicked
 
     void Start()
     {
@@ -17,12 +18,25 @@ public class MainMenuController : MonoBehaviour
 
     public void OnStartButtonClicked()
     {
+        // Prevent the button from being clicked multiple times
+        if (buttonClicked) return;
+
+        buttonClicked = true; // Mark the button as clicked
+        startButton.interactable = false; // Disable the button
+
         Debug.Log("Button Pressed");
+
         // Play the sound effect
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
 
         // Trigger the fade-out animation
-        fadeOutAnimator.SetTrigger("FadeOut");
+        if (fadeOutAnimator != null)
+        {
+            fadeOutAnimator.SetTrigger("FadeOut");
+        }
 
         // Start the coroutine to load the main level after a delay
         StartCoroutine(LoadMainLevel());
