@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1524c0664e68e4f4c988ca0b09304c77, type: 3}
   - {fileID: 8300000, guid: 815eef42b8afea247841efbba6a6501d, type: 3}
   - {fileID: 8300000, guid: fcafe993017a84044b1db7c82070f348, type: 3}
+  - {fileID: 8300000, guid: 067e3266369079a4a991632c27416fae, type: 3}
   soundVolume: 0.3
 --- !u!61 &7219857135304151904
 BoxCollider2D:

@@ -1524,6 +1524,52 @@ MonoBehaviour:
   spawnRangeY: {x: -9, y: 10}
   humanSpawnThreshold: 10
   despawnTime: 15
+--- !u!1 &1018571590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018571591}
+  - component: {fileID: 1018571592}
+  m_Layer: 0
+  m_Name: AmbientMusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1018571591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018571590}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5159184, y: 0.003265306, z: 0}
+  m_LocalScale: {x: 0.08163265, y: 0.08163265, z: 0.08163265}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1570921511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1018571592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018571590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c3a22aa5481c64097207f5b5c6744e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambientMusic: {fileID: 8300000, guid: aac44ed07067781419520bb9a177bc89, type: 3}
+  musicVolume: 0.4
 --- !u!1 &1079510518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6806,7 +6852,7 @@ MonoBehaviour:
   minRainInterval: 30
   maxRainInterval: 45
   rainDuration: 30
-  rainSound: {fileID: 8300000, guid: 4293b19fafef47843bec1c193c85ffc1, type: 3}
+  rainSound: {fileID: 8300000, guid: 4507e416c5bcc2341a94905676c4a00b, type: 3}
   fadeDuration: 2
 --- !u!1 &1490573775
 GameObject:
@@ -7057,6 +7103,7 @@ Transform:
   - {fileID: 727309481}
   - {fileID: 597348478}
   - {fileID: 266799408}
+  - {fileID: 1018571591}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1570921512
