@@ -37,10 +37,12 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public int GetScore()
     {
         return score;
     }
+
     private void Start()
     {
         UpdateScoreText();
@@ -69,6 +71,17 @@ public class ScoreManager : MonoBehaviour
         {
             StartCoroutine(PlayEffects());
         }
+    }
+
+    public bool DeductScore(int amount)
+    {
+        if (score >= amount)
+        {
+            score -= amount;
+            UpdateScoreText();
+            return true; // Deduction successful
+        }
+        return false; // Not enough points
     }
 
     private void UpdateScoreText()

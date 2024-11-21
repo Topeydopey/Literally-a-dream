@@ -10,9 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public GameObject player2; // Reference to Player 2 GameObject
     public KeyCode togglePlayer2Key = KeyCode.M; // Key to toggle Player 2
 
+    public bool isPaused = false; // Variable to track if the cat is paused
+
     private void Update()
     {
-        HandleMovement();
+        if (!isPaused) // Only handle movement if not paused
+        {
+            HandleMovement();
+        }
+
         HandlePlayer2Toggle();
     }
 
@@ -70,5 +76,16 @@ public class PlayerMovement : MonoBehaviour
                 player2.SetActive(!player2.activeSelf);
             }
         }
+    }
+
+    public void PauseMovement()
+    {
+        isPaused = true; // Pause the cat's movement
+        body.velocity = Vector2.zero; // Stop all velocity
+    }
+
+    public void ResumeMovement()
+    {
+        isPaused = false; // Resume the cat's movement
     }
 }
