@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class SlotMachineTrigger : MonoBehaviour
 {
-    public GameObject slotMachineUI; // Reference to the Slot Machine UI
+    public GameObject slotMachineUI; // Reference to the Slot Machine UI (Canvas or parent UI object)
     public GameObject mainGameUI; // Reference to the Main Game UI
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,15 +20,18 @@ public class SlotMachineTrigger : MonoBehaviour
             // Activate the Slot Machine UI
             if (slotMachineUI != null)
             {
-                // Reset the slot machine state
+                slotMachineUI.SetActive(true); // Enable the UI first
+
+                // Reset the slot machine state after activation
                 SlotMachineSprites slotMachineScript = slotMachineUI.GetComponent<SlotMachineSprites>();
                 if (slotMachineScript != null)
                 {
                     slotMachineScript.ResetSlotMachine();
                 }
-
-                // Show the slot machine UI
-                slotMachineUI.SetActive(true);
+                else
+                {
+                    Debug.LogError("SlotMachineSprites script not found on SlotMachineUI.");
+                }
             }
 
             // Destroy the slot machine object after interaction

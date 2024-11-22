@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
-  m_sharedMaterial: {fileID: 5207576871893775316, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -366,10 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -821,9 +821,6 @@ MonoBehaviour:
   spinningSound: {fileID: 8300000, guid: ff69fdce1ecaf804592d9090c4ae69a0, type: 3}
   winSound: {fileID: 8300000, guid: 1a039ad157b5ec645aaa483fcc4072df, type: 3}
   loseSound: {fileID: 8300000, guid: 23c532f5d8c183f4ea98c24bf3a942cc, type: 3}
-  spinCost: 10
-  smallWinReward: 20
-  jackpotReward: 100
 --- !u!1 &4240701980423209736
 GameObject:
   m_ObjectHideFlags: 0

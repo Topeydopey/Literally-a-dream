@@ -20,23 +20,38 @@ public class SlotMachineSprites : MonoBehaviour
     public AudioClip winSound;
     public AudioClip loseSound;
 
+    public int spinCost = 10; // Points deducted for each spin
+    public int smallWinReward = 20; // Points rewarded for small win
+    public int jackpotReward = 100; // Points rewarded for jackpot
+
     private AudioSource audioSource;
     private bool isSpinning = false;
 
     private void Start()
     {
+        // Ensure there's an AudioSource attached to this GameObject
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
+            Debug.LogWarning("No AudioSource found on SlotMachineSprites object. Adding one automatically.");
             audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
+
 
     public void Spin()
     {
         if (isSpinning) return;
 
+        // Deduct score for spinning
+        if (!ScoreManager.instance.DeductScore(spinCost))
+        {
+            resultText.text = "Not enough points!";
+            return;
+        }
+
         isSpinning = true;
+
         PlaySound(buttonPressSound);
 
         spinButton.interactable = false;
@@ -84,11 +99,13 @@ public class SlotMachineSprites : MonoBehaviour
         {
             resultText.text = "Jackpot! You win!";
             PlaySound(winSound);
+            ScoreManager.instance.AddScore(jackpotReward);
         }
         else if (slot1 == slot2 || slot2 == slot3 || slot1 == slot3)
         {
             resultText.text = "You got a small win!";
             PlaySound(winSound);
+            ScoreManager.instance.AddScore(smallWinReward);
         }
         else
         {
@@ -102,22 +119,45 @@ public class SlotMachineSprites : MonoBehaviour
 
     public void ResetSlotMachine()
     {
-        // Reset result text
-        resultText.text = "Spin to win!";
-        resultText.transform.rotation = Quaternion.identity;
+        Debug.Log("ResetSlotMachine method called."); // Debug log for tracking
 
-        // Ensure the spin button is enabled
-        spinButton.interactable = true;
+        // Reset result text
+        if (resultText != null)
+        {
+            resultText.text = "Spin to win!";
+            resultText.transform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            Debug.LogError("ResultText reference is missing!");
+        }
+
+        // Enable spin button
+        if (spinButton != null)
+        {
+            spinButton.interactable = true;
+        }
+        else
+        {
+            Debug.LogError("SpinButton reference is missing!");
+        }
 
         // Stop any ongoing audio
-        if (audioSource.isPlaying)
+        if (audioSource != null && audioSource.isPlaying)
         {
             audioSource.Stop();
+            Debug.Log("Audio stopped.");
+        }
+        else if (audioSource == null)
+        {
+            Debug.LogError("AudioSource reference is missing!");
         }
 
         // Reset spinning state
         isSpinning = false;
+        Debug.Log("Slot machine reset complete.");
     }
+
 
     private void PlaySound(AudioClip clip, bool loop = false)
     {
