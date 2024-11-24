@@ -4,6 +4,7 @@ public class AmbientMusicManager : MonoBehaviour
 {
     public AudioClip ambientMusic; // The music clip to play
     public float musicVolume = 0.5f; // Volume of the music (0 to 1)
+    public float fadeOutDuration = 0.5f; // Time it takes to fade out the music
 
     private AudioSource audioSource;
 
@@ -47,5 +48,29 @@ public class AmbientMusicManager : MonoBehaviour
         {
             audioSource.volume = musicVolume;
         }
+    }
+
+    public void FadeOutMusic()
+    {
+        if (audioSource != null)
+        {
+            StartCoroutine(FadeOutCoroutine());
+        }
+    }
+
+    private System.Collections.IEnumerator FadeOutCoroutine()
+    {
+        float startVolume = audioSource.volume;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeOutDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / fadeOutDuration);
+            yield return null;
+        }
+
+        audioSource.Stop(); // Stop completely after fade out
+        audioSource.volume = startVolume; // Reset volume for potential future use
     }
 }
