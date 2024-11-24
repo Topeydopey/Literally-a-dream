@@ -9,7 +9,6 @@ public class SlotMachineSpawner : MonoBehaviour
     public float despawnTime = 10f; // Time before the slot machine despawns
 
     public GameObject slotMachineUI; // Reference to the inactive Slot Machine UI
-    public GameObject mainGameUI; // Reference to the Main Game UI
 
     private void Start()
     {
@@ -34,7 +33,6 @@ public class SlotMachineSpawner : MonoBehaviour
             // Attach a trigger script to handle UI activation
             SlotMachineTrigger trigger = slotMachine.AddComponent<SlotMachineTrigger>();
             trigger.slotMachineUI = slotMachineUI;
-            trigger.mainGameUI = mainGameUI;
 
             // Destroy the slot machine after the despawn time
             Destroy(slotMachine, despawnTime);

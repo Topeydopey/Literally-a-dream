@@ -3,8 +3,6 @@ using UnityEngine;
 public class SlotMachineTrigger : MonoBehaviour
 {
     public GameObject slotMachineUI; // Reference to the Slot Machine UI (Canvas or parent UI object)
-    public GameObject mainGameUI; // Reference to the Main Game UI
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
