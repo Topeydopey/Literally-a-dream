@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Mine : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Mine : MonoBehaviour
 
     public float blackoutDelay = 0.5f; // Delay before the blackout
     public float blackoutDuration = 1f; // Duration of the blackout fade
+    public float transitionDelay = 2f; // Additional delay before transitioning to the shop
+    public string shopSceneName = "ShopMenu"; // Name of the shop scene
 
     private AudioSource audioSource;
     private Image blackoutImage; // Dynamically found at runtime
@@ -23,30 +26,38 @@ public class Mine : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        // Get references from the GameManager
-        blackoutImage = GameManager.instance?.blackoutImage;
-        deathScreen = GameManager.instance?.deathScreen;
-
-        if (blackoutImage == null)
+        // Find the DeathScreen and BlackoutImage even if inactive
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        foreach (GameObject obj in allObjects)
         {
-            Debug.LogError("BlackoutImage not found! Ensure it is assigned in the GameManager.");
+            if (obj.CompareTag("DeathScreen"))
+            {
+                deathScreen = obj;
+                blackoutImage = deathScreen.GetComponentInChildren<Image>();
+                break;
+            }
         }
 
         if (deathScreen == null)
         {
-            Debug.LogError("DeathScreen not found! Ensure it is assigned in the GameManager.");
+            Debug.LogError("DeathScreen not found! Ensure it has the 'DeathScreen' tag and is in the scene.");
+        }
+
+        if (blackoutImage == null)
+        {
+            Debug.LogError("BlackoutImage not found! Ensure it is a child of the DeathScreen.");
+        }
+
+        // Ensure DeathScreen is inactive at start
+        if (deathScreen != null)
+        {
+            deathScreen.SetActive(false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            playerMovement.PauseMovement();
-        }
-
-        if (other.CompareTag("Cat")) // Check if the colliding object is the cat
+        if (other.CompareTag("Cat"))
         {
             // Trigger the explosion
             Explode();
@@ -54,8 +65,8 @@ public class Mine : MonoBehaviour
             // Reduce the player's score
             ScoreManager.instance.AddScore(-scorePenalty);
 
-            // Trigger blackout and death screen
-            StartCoroutine(TriggerBlackout());
+            // Trigger blackout and transition to the shop
+            StartCoroutine(TriggerBlackoutAndTransition());
         }
     }
 
@@ -74,19 +85,24 @@ public class Mine : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator TriggerBlackout()
+    private System.Collections.IEnumerator TriggerBlackoutAndTransition()
     {
         // Stop the music immediately
         AmbientMusicManager ambientManager = FindObjectOfType<AmbientMusicManager>();
         if (ambientManager != null)
         {
-            ambientManager.FadeOutMusic(); // Initiate fade out
+            ambientManager.FadeOutMusic();
         }
 
         // Wait for the blackout delay
         yield return new WaitForSeconds(blackoutDelay);
 
-        // Fade the screen to black
+        // Activate the DeathScreen and start blackout
+        if (deathScreen != null)
+        {
+            deathScreen.SetActive(true); // Activate DeathScreen
+        }
+
         if (blackoutImage != null)
         {
             float elapsedTime = 0f;
@@ -101,10 +117,10 @@ public class Mine : MonoBehaviour
             }
         }
 
-        // Show the death screen
-        if (deathScreen != null)
-        {
-            deathScreen.SetActive(true);
-        }
+        // Wait for the transition delay
+        yield return new WaitForSeconds(transitionDelay);
+
+        // Load the shop menu scene
+        SceneManager.LoadScene(shopSceneName);
     }
 }
