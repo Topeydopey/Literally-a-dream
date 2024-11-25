@@ -7,12 +7,12 @@ public class Mine : MonoBehaviour
     public AudioClip explosionSound; // Explosion sound
     public int scorePenalty = 20; // Points to deduct when triggered
 
-    public GameObject deathScreen; // Reference to the Death Screen UI
-    public Image blackoutImage; // Reference to an Image used for blackout
     public float blackoutDelay = 0.5f; // Delay before the blackout
     public float blackoutDuration = 1f; // Duration of the blackout fade
 
     private AudioSource audioSource;
+    private Image blackoutImage; // Dynamically found at runtime
+    private GameObject deathScreen; // Dynamically found at runtime
 
     private void Start()
     {
@@ -21,6 +21,20 @@ public class Mine : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Get references from the GameManager
+        blackoutImage = GameManager.instance?.blackoutImage;
+        deathScreen = GameManager.instance?.deathScreen;
+
+        if (blackoutImage == null)
+        {
+            Debug.LogError("BlackoutImage not found! Ensure it is assigned in the GameManager.");
+        }
+
+        if (deathScreen == null)
+        {
+            Debug.LogError("DeathScreen not found! Ensure it is assigned in the GameManager.");
         }
     }
 
@@ -31,6 +45,7 @@ public class Mine : MonoBehaviour
         {
             playerMovement.PauseMovement();
         }
+
         if (other.CompareTag("Cat")) // Check if the colliding object is the cat
         {
             // Trigger the explosion
@@ -72,15 +87,18 @@ public class Mine : MonoBehaviour
         yield return new WaitForSeconds(blackoutDelay);
 
         // Fade the screen to black
-        float elapsedTime = 0f;
-        Color initialColor = blackoutImage.color;
-        Color targetColor = new Color(0, 0, 0, 1); // Full black
-
-        while (elapsedTime < blackoutDuration)
+        if (blackoutImage != null)
         {
-            elapsedTime += Time.deltaTime;
-            blackoutImage.color = Color.Lerp(initialColor, targetColor, elapsedTime / blackoutDuration);
-            yield return null;
+            float elapsedTime = 0f;
+            Color initialColor = blackoutImage.color;
+            Color targetColor = new Color(0, 0, 0, 1); // Full black
+
+            while (elapsedTime < blackoutDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                blackoutImage.color = Color.Lerp(initialColor, targetColor, elapsedTime / blackoutDuration);
+                yield return null;
+            }
         }
 
         // Show the death screen
