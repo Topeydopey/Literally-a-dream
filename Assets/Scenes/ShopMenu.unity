@@ -154,8 +154,8 @@ MonoBehaviour:
   lockedButton: {fileID: 1897543318}
   audioSource: {fileID: 1788833063}
   insufficientScoreSound: {fileID: 8300000, guid: d0e0e1634c593464ba12a4e2ab1089b6, type: 3}
-  successSound: {fileID: 8300000, guid: c799ea49f1bd95d4ab065dbe7dea401a, type: 3}
-  scoreThreshold: 10
+  successSound: {fileID: 8300000, guid: e8272e6dbd8f1e549a1cd57c3168691f, type: 3}
+  scoreThreshold: 500
   nextSceneName: EndLevel
 --- !u!4 &9773498
 Transform:
@@ -2319,9 +2319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Things Stomped:
-
-'
+  m_text: 'Things Stomped:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
   m_sharedMaterial: {fileID: 5207576871893775316, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
@@ -3543,7 +3541,6 @@ GameObject:
   - component: {fileID: 1897543320}
   - component: {fileID: 1897543319}
   - component: {fileID: 1897543318}
-  - component: {fileID: 1897543322}
   m_Layer: 5
   m_Name: Advance Button
   m_TagString: Untagged
@@ -3655,24 +3652,6 @@ RectTransform:
   m_AnchoredPosition: {x: 162.59, y: -117.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1897543322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897543317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e772ea1127254f479fb901db02b58e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockedButton: {fileID: 0}
-  audioSource: {fileID: 0}
-  insufficientScoreSound: {fileID: 0}
-  successSound: {fileID: 0}
-  scoreThreshold: 500
-  nextSceneName: EndLevel
 --- !u!1 &2076553625
 GameObject:
   m_ObjectHideFlags: 0
