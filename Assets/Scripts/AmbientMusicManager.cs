@@ -10,15 +10,6 @@ public class AmbientMusicManager : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure only one AmbientMusicManager exists in the scene
-        if (FindObjectsOfType<AmbientMusicManager>().Length > 1)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject); // Persist across scenes
-
         // Add or get an AudioSource component
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
