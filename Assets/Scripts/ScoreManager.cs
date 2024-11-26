@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -48,6 +49,34 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
     }
 
+    private void OnEnable()
+    {
+        // Listen to the sceneLoaded event to dynamically reassign scoreText
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from the sceneLoaded event to avoid memory leaks
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Try to find the ScoreText object in the new scene
+        if (scoreText == null)
+        {
+            GameObject scoreTextObject = GameObject.FindWithTag("ScoreText");
+            if (scoreTextObject != null)
+            {
+                scoreText = scoreTextObject.GetComponent<TextMeshProUGUI>();
+                UpdateScoreText(); // Ensure the score is displayed correctly
+            }
+            else
+            {
+                Debug.LogError("ScoreText object not found in the new scene! Ensure it has the correct tag.");
+            }
+        }
+    }
     public void AddScore(int amount)
     {
         score += amount;

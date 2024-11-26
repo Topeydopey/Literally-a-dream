@@ -1,46 +1,28 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    public TextMeshProUGUI pointsText; // Display player's points
-    public int itemCost = 50; // Cost of an item
+    public TextMeshProUGUI totalScoreText; // Reference to the text element
 
-    private void Start()
+    private void Update()
     {
-        UpdatePointsDisplay();
+        // Update the shop's UI with the player's total score
+        totalScoreText.text = "Total Points: " + GameManager.instance.totalScore;
     }
 
-    public void BuyItem()
+    public void BuyItem(int cost)
     {
-        int currentPoints = ScoreManager.instance.GetScore();
-
-        if (currentPoints >= itemCost)
+        if (GameManager.instance.DeductScore(cost))
         {
-            // Deduct points
-            ScoreManager.instance.AddScore(-itemCost);
-
-            // Provide the item (add logic for giving the item here)
-            Debug.Log("Item purchased!");
+            Debug.Log("Purchase successful!");
         }
         else
         {
-            Debug.Log("Not enough points!");
+            Debug.Log("Not enough points to buy this item.");
         }
 
-        UpdatePointsDisplay();
-    }
-
-    private void UpdatePointsDisplay()
-    {
-        if (pointsText != null)
-        {
-            pointsText.text = "Points: " + ScoreManager.instance.GetScore();
-        }
-    }
-
-    public void ReturnToGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+        // Update the score UI after a purchase
+        totalScoreText.text = "Total Points: " + GameManager.instance.totalScore;
     }
 }

@@ -59,6 +59,13 @@ public class Mine : MonoBehaviour
     {
         if (other.CompareTag("Cat"))
         {
+            // Stop the player's movement
+            var playerMovement = other.GetComponent<PlayerMovement>(); // Replace 'PlayerMovement' with the actual script name
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false; // Disable movement script
+            }
+
             // Trigger the explosion
             Explode();
 
@@ -69,6 +76,7 @@ public class Mine : MonoBehaviour
             StartCoroutine(TriggerBlackoutAndTransition());
         }
     }
+
 
     private void Explode()
     {
@@ -109,12 +117,7 @@ public class Mine : MonoBehaviour
             Color initialColor = blackoutImage.color;
             Color targetColor = new Color(0, 0, 0, 1); // Full black
 
-            while (elapsedTime < blackoutDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                blackoutImage.color = Color.Lerp(initialColor, targetColor, elapsedTime / blackoutDuration);
-                yield return null;
-            }
+
         }
 
         // Wait for the transition delay
