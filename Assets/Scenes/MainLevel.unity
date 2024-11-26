@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 266799409}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: Hat
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1072,7 +1072,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3487301, y: 0.62472147, z: -10}
+  m_LocalPosition: {x: -0.34748983, y: 0.62472147, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 619394801}
   m_Layer: 0
   m_Name: Global Light 2D
-  m_TagString: Untagged
+  m_TagString: GlobalLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 727309481}
   m_Layer: 0
   m_Name: CatHeadLocation (1)
-  m_TagString: Untagged
+  m_TagString: HatOffScreenLocation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1537,7 +1537,7 @@ Transform:
   m_GameObject: {fileID: 806784050}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4874506, y: 0.054262977, z: -0.8163265}
+  m_LocalPosition: {x: 0.48755187, y: 0.054262977, z: -0.8163265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1650,8 +1650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610849359bf44284c81814d02f916118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunLight: {fileID: 1079510520}
-  globalLight: {fileID: 619394801}
   cycleThreshold: 50
   transitionDuration: 2
   daySunColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1660,9 +1658,6 @@ MonoBehaviour:
   nightSunColor: {r: 0, g: 0, b: 1, a: 1}
   nightSunIntensity: 0.5
   nightGlobalIntensity: 0.07
-  hat: {fileID: 266799408}
-  catHead: {fileID: 1508570225}
-  hatOffScreenLocation: {fileID: 727309481}
   hatDropSpeed: 1
 --- !u!114 &924070329
 MonoBehaviour:
@@ -1796,7 +1791,7 @@ GameObject:
   - component: {fileID: 1079510520}
   m_Layer: 0
   m_Name: SunLight
-  m_TagString: Untagged
+  m_TagString: SunLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7085,7 +7080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainEffect: {fileID: 1487212368}
-  minRainInterval: 30
+  minRainInterval: 20
   maxRainInterval: 45
   rainDuration: 30
   rainSound: {fileID: 8300000, guid: 4507e416c5bcc2341a94905676c4a00b, type: 3}
@@ -7178,7 +7173,7 @@ GameObject:
   - component: {fileID: 1508570225}
   m_Layer: 0
   m_Name: CatHeadLocation
-  m_TagString: Untagged
+  m_TagString: CatHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7532,8 +7527,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Things Stomped:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
-  m_sharedMaterial: {fileID: 5207576871893775316, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6428a9d796ed96444b232ab633213a11, type: 2}
+  m_sharedMaterial: {fileID: 6965822002825512177, guid: 6428a9d796ed96444b232ab633213a11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -1707,8 +1707,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Did you know 99% of gamblers quit before they hit it big?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
-  m_sharedMaterial: {fileID: 5207576871893775316, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2159,8 +2159,8 @@ MonoBehaviour:
 
     We''re totally not scamming you'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
-  m_sharedMaterial: {fileID: 5207576871893775316, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2321,8 +2321,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Things Stomped:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
-  m_sharedMaterial: {fileID: 5207576871893775316, guid: 7deb435b201babf428aca2d6627db8a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6428a9d796ed96444b232ab633213a11, type: 2}
+  m_sharedMaterial: {fileID: 6965822002825512177, guid: 6428a9d796ed96444b232ab633213a11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

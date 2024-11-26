@@ -8,6 +8,11 @@ TagManager:
   - DeathScreen
   - BlackoutImage
   - ScoreText
+  - GlobalLight
+  - SunLight
+  - Hat
+  - CatHead
+  - HatOffScreenLocation
   layers:
   - Default
   - TransparentFX

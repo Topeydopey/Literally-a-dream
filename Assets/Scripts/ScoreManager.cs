@@ -60,6 +60,7 @@ public class ScoreManager : MonoBehaviour
         // Unsubscribe from the sceneLoaded event to avoid memory leaks
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Try to find the ScoreText object in the new scene
@@ -75,6 +76,10 @@ public class ScoreManager : MonoBehaviour
             {
                 Debug.LogError("ScoreText object not found in the new scene! Ensure it has the correct tag.");
             }
+        }
+        if (isEffectActive)
+        {
+            StartCoroutine(PlayEffects()); // Restart the effects when the scene loads
         }
     }
     public void AddScore(int amount)
